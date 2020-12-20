@@ -1,0 +1,36 @@
+#!/bin/bash
+# [ $FILE = "hola" ]; # verdad si FILE es hola
+# [ -d /usr ]; # verdad si /usr es un directorio
+# [ -d $DIR ]; # verdad si DIR es un directorio
+# [ -r $FILE ]; # verdad si FILE existe y podemos leerlo
+# [ -w $FILE ]; # verdad si FILE existe y podemos escribir en él
+# [ -x $FILE ]; # verdad si FILE existe y podemos ejecutarlo
+# [ -r $FILE ]; # verdad si FILE existe y podemos leerlo
+# [ n1 -eq n2 ]; # verdad si los enteros n1 y n2 son iguales
+# [ n1 -ne n2 ]; # verdad si los enteros n1 y n2 no son iguales
+# [ n1 -gt n2 ]; # verdad si n1 es mayor que n2
+# [ n1 -ge n2 ]; # verdad si n1 es mayor o igual que n2
+# [ n1 -lt n2 ]; # verdad si n1 es menor que n2
+# [ n1 -le n2 ]; # verdad si n1 es menor o igual que n2 
+
+declare –i i
+for i in $(ls); do
+ if [ -x $i ]; then
+ echo $i
+ fi
+done 
+
+
+if [ $# -eq 0 ]; then
+ echo Falta el nombre del fichero
+else
+ if [ -f $1 ]; then
+ if [ -x $1 ]; then
+ echo El fichero $1 es ejecutable
+ else
+ echo El fichero $1 NO es ejecutable
+ fi
+ else
+ echo El argumento $1 no es un fichero
+ fi
+fi
